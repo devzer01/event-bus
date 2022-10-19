@@ -1,6 +1,6 @@
 """ Tests that a subscribed event is run after. """
 
-from event_bus import EventBus
+from event_bus_async import EventBus
 
 bus = EventBus()
 GLOBAL_VAR = 'Init'

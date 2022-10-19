@@ -1,7 +1,7 @@
 """ Tests removing subscribed events. """
 
-from event_bus import EventBus
-from event_bus.exceptions import EventDoesntExist
+from event_bus_async import EventBus
+from event_bus_async.exceptions import EventDoesntExist
 
 bus = EventBus()
 

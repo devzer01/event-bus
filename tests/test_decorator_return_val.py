@@ -1,6 +1,6 @@
 """ Test the emitted functions return value."""
 
-from event_bus import EventBus
+from event_bus_async import EventBus
 
 bus = EventBus()
 EVENT_NAME = 'completed'

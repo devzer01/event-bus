@@ -1,6 +1,6 @@
 """ Tests event being emitted and proper functions being called. """
 
-from event_bus.bus import EventBus
+from event_bus_async.bus import EventBus
 
 # Constants
 bus = EventBus()
@@ -9,7 +9,7 @@ EVENT_NAME = 'completed'
 
 
 @bus.on(event=EVENT_NAME)
-def subscription():
+async def subscription():
     """ Subscribed event to run after event `completed` """
     global GLOBAL_VAR
     GLOBAL_VAR = 'Finished'

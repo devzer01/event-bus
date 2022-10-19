@@ -17,19 +17,21 @@ A way to trigger multiple subsequent functions.
 The EventBus is meant to be a singleton used throughout an application.
 
 ```python
-from event_bus import EventBus
+from event_bus_async import EventBus
 
 bus = EventBus()
+
 
 @bus.on('hello')
 def subscribed_event():
     print('World!')
 
+
 def some_func():
     print('Hello')
     bus.emit('hello')
 
->>> some_func()
+>> > some_func()
 "Hello"
 "World!"
 ```
@@ -158,11 +160,13 @@ This can be achieved with the method `remove_event(event: str, func_name: str)`
 **Note: This can also raise a `EventDoesntExist` exception.**
 
 ```python
-from event_bus.exceptions import EventDoesntExist
+from event_bus_async.exceptions import EventDoesntExist
+
 
 @bus.on('fake_event')
 def event_one():
     pass
+
 
 def some_func():
     try:
@@ -173,10 +177,10 @@ def some_func():
     else:
         print("Removed event.")
 
->>> bus.event_count
+>> > bus.event_count
 1
->>> some_func()
+>> > some_func()
 "Removed event."
->>> bus.event_count
+>> > bus.event_count
 0
 ```

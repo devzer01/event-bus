@@ -2,7 +2,7 @@ from time import time
 from threading import Thread
 
 # Libs
-from event_bus import EventBus
+from event_bus_async import EventBus
 
 bus = EventBus()
 

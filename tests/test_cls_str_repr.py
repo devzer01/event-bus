@@ -1,6 +1,6 @@
 """ Tests the string representation of an EventBus class. """
 
-from event_bus import EventBus
+from event_bus_async import EventBus
 
 # Constants
 bus = EventBus()

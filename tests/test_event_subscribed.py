@@ -1,6 +1,6 @@
 """ Tests that a function is actually subscribed to an event. """
 
-from event_bus.bus import EventBus
+from event_bus_async.bus import EventBus
 
 # Constants
 bus = EventBus()

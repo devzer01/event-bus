@@ -1,6 +1,6 @@
 """ Tests emitting specific events. """
 
-from event_bus import EventBus
+from event_bus_async import EventBus
 
 bus = EventBus()
 

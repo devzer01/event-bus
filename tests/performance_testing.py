@@ -8,7 +8,7 @@ from threading import Thread
 from multiprocessing import Process
 
 # Libs
-from event_bus import EventBus
+from event_bus_async import EventBus
 
 bus = EventBus()
 EVENT_ONE = 'test_1'

@@ -1,11 +1,12 @@
 """ A simple event bus """
-
+import asyncio
+import inspect
 from functools import wraps
 from threading import Thread
 from collections import defaultdict, Counter
 from typing import Iterable, Callable, List, Dict, Any, Set, Union
-
-from event_bus.exceptions import EventDoesntExist
+import concurrent.futures
+from event_bus_async.exceptions import EventDoesntExist
 
 
 class EventBus:
@@ -102,7 +103,7 @@ class EventBus:
         """
         self._events[event].add(func)
 
-    def emit(self, event: str, *args, **kwargs) -> None:
+    async def emit(self, event: str, *args, **kwargs) -> None:
         """ Emit an event and run the subscribed functions.
 
         :param event: Name of the event.
@@ -127,7 +128,10 @@ class EventBus:
 
         else:
             for func in self._event_funcs(event):
-                func(*args, **kwargs)
+                if inspect.iscoroutinefunction(func):
+                    await func(*args, **kwargs)
+                else:
+                    func(*args, **kwargs)
 
     def emit_only(self, event: str, func_names: Union[str, List[str]], *args,
                   **kwargs) -> None:
